@@ -135,7 +135,7 @@ src/
 1. Clone the repository:
 
 ```
-git clone <your-repo-link>
+git clone <finance-dashboard>
 cd finance-dashboard
 ```
 
