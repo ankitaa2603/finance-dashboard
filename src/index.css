@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --bg-primary: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-sidebar: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border: #e2e8f0;
+    --border-subtle: #f1f5f9;
+    --accent: #0c90e1;
+    --accent-light: #e0effe;
+    --income: #059669;
+    --income-light: #d1fae5;
+    --expense: #dc2626;
+    --expense-light: #fee2e2;
+  }
+
+  .dark {
+    --bg-primary: #0b0f1a;
+    --bg-card: #131929;
+    --bg-sidebar: #0f1520;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #1e2d45;
+    --border-subtle: #162236;
+    --accent: #36aaf5;
+    --accent-light: #0a2540;
+    --income: #10b981;
+    --income-light: #022c22;
+    --expense: #ef4444;
+    --expense-light: #2d0a0a;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Sora', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 4px 16px -2px rgb(0 0 0 / 0.08);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .dark .card {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 4px 16px -2px rgb(0 0 0 / 0.25);
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 12px 32px -4px rgb(0 0 0 / 0.12);
+  }
+
+  .dark .card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 12px 32px -4px rgb(0 0 0 / 0.35);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    background-color: var(--accent);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgb(12 144 225 / 0.35);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none;
+    color: var(--text-secondary);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--border-subtle);
+    color: var(--text-primary);
+  }
+
+  .input-field {
+    @apply w-full px-3.5 py-2.5 rounded-lg text-sm transition-all duration-200 focus:outline-none focus:ring-2;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+  }
+
+  .input-field:focus {
+    border-color: var(--accent);
+    ring-color: var(--accent);
+    box-shadow: 0 0 0 3px rgb(12 144 225 / 0.12);
+  }
+
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, var(--border-subtle) 25%, var(--border) 50%, var(--border-subtle) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s infinite linear;
+    border-radius: 0.5rem;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer;
+    color: var(--text-secondary);
+  }
+
+  .nav-item:hover {
+    background-color: var(--border-subtle);
+    color: var(--text-primary);
+  }
+
+  .nav-item.active {
+    background-color: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .stat-trend-up {
+    color: var(--income);
+    background-color: var(--income-light);
+  }
+
+  .stat-trend-down {
+    color: var(--expense);
+    background-color: var(--expense-light);
+  }
+}
+
+@layer utilities {
+  .text-primary { color: var(--text-primary); }
+  .text-secondary { color: var(--text-secondary); }
+  .text-muted { color: var(--text-muted); }
+  .text-accent { color: var(--accent); }
+  .text-income { color: var(--income); }
+  .text-expense { color: var(--expense); }
+  .bg-card { background-color: var(--bg-card); }
+  .bg-primary { background-color: var(--bg-primary); }
+  .bg-accent { background-color: var(--accent); }
+  .bg-accent-light { background-color: var(--accent-light); }
+  .border-themed { border-color: var(--border); }
+  .border-subtle { border-color: var(--border-subtle); }
+}
